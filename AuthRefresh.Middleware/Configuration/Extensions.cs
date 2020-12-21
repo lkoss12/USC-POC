@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 
-namespace AuthRefreshApi.Middleware
+namespace AuthRefresh.Middleware.Configuration
 {
-    public static class AuthRefreshExtensions
+    public static class Extensions
     {
         public static IApplicationBuilder UseTokenAuthorization(
             this IApplicationBuilder builder)

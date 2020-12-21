@@ -1,4 +1,4 @@
-using AuthRefreshApi.Interfaces;
+using AuthRefresh.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthRefreshApi.Controllers

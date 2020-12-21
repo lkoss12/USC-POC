@@ -5,6 +5,15 @@
 		},
 		{
 			"path": "AuthRefreshApi"
+		},
+		{
+			"path": "AuthRefresh.Data"
+		},
+		{
+			"path": "AuthRefresh.Services"
+		},
+		{
+			"path": "AuthRefresh.Middleware"
 		}
 	],
 	"settings": {}

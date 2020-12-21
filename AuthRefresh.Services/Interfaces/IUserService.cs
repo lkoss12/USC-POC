@@ -1,4 +1,4 @@
-namespace AuthRefreshApi.Interfaces
+namespace AuthRefresh.Services.Interfaces
 {
     public interface IUserService
     {

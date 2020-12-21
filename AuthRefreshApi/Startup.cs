@@ -1,11 +1,9 @@
 using System;
 using System.IO;
 using System.Linq;
+using AuthRefresh.Services.Configuration;
 using AuthRefreshApi.Configuration;
-using AuthRefreshApi.Interfaces;
-using AuthRefreshApi.Middleware;
-using AuthRefreshApi.Services;
-using AuthRefreshApi.TransferObjects;
+using AuthRefresh.Middleware.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -33,12 +31,9 @@ namespace AuthRefreshApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<ITokenService, TokenService>();
             services.AddSingleton<IConfiguration>((x) => Configuration);
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IUser, User>();
-            services.AddScoped<IImpersonatedUser, ImpersonatedUser>();
-
+            services.AddAuthRefreshServices();
+            
             IdentityModelEventSource.ShowPII = true;
 
             var corsDomains = new CorsDomainsConfigSection();

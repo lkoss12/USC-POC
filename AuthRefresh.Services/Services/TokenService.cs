@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using AuthRefreshApi.Constants;
-using AuthRefreshApi.Interfaces;
 using JWT;
 using JWT.Serializers;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using AuthRefresh.Services.Constants;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http;
+using AuthRefresh.Services.Interfaces;
 
-namespace AuthRefreshApi.Services
+namespace AuthRefresh.Services.Services
 {
     public class TokenService : ITokenService
     {

@@ -1,6 +1,6 @@
-using AuthRefreshApi.Interfaces;
+using AuthRefresh.Services.Interfaces;
 
-namespace AuthRefreshApi.TransferObjects
+namespace AuthRefresh.Services.TransferObjects
 {
     public class User : IUser
     {

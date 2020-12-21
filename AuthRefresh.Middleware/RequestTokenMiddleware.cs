@@ -2,13 +2,13 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using AuthRefreshApi.Constants;
-using AuthRefreshApi.Interfaces;
+using AuthRefresh.Services.Constants;
+using AuthRefresh.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
 
-namespace AuthRefreshApi.Middleware
+namespace AuthRefresh.Middleware
 {
     public class RequestTokenMiddleware
     {
@@ -32,18 +32,20 @@ namespace AuthRefreshApi.Middleware
                     var authValue = splitAuth[1];
                     var tokenService = httpContext.RequestServices.GetRequiredService<ITokenService>();
                     var dictionaryClaims = tokenService.DecodeToken(authValue);
-                    if (dictionaryClaims.Any(x => ((x.Key == JwtRegisteredClaimNames.Typ) && (x.Value.ToString() == TokenType.Authorization)))) {
-                        var tokenId = dictionaryClaims.Single(x => x.Key == JwtRegisteredClaimNames.Jti).Value;
-                        if (tokenService.IsTokenValid(tokenId.ToString(), TokenType.Authorization)) {
-                            var claims = dictionaryClaims.Select(dc => new Claim(dc.Key, dc.Value.ToString()));
+                    if (dictionaryClaims != null) {
+                        if (dictionaryClaims.Any(x => ((x.Key == JwtRegisteredClaimNames.Typ) && (x.Value.ToString() == TokenType.Authorization)))) {
+                            var tokenId = dictionaryClaims.Single(x => x.Key == JwtRegisteredClaimNames.Jti).Value;
+                            if (tokenService.IsTokenValid(tokenId.ToString(), TokenType.Authorization)) {
+                                var claims = dictionaryClaims.Select(dc => new Claim(dc.Key, dc.Value.ToString()));
 
-                            var identity = new ClaimsIdentity(claims, "JwtToken");
-                            var principal = new ClaimsPrincipal(identity);
-                            httpContext.User = principal;
-                            var user = httpContext.RequestServices.GetRequiredService<IUser>();
-                            user.UscId = dictionaryClaims.First(x => x.Key == JwtRegisteredClaimNames.Sub).Value.ToString();
+                                var identity = new ClaimsIdentity(claims, "JwtToken");
+                                var principal = new ClaimsPrincipal(identity);
+                                httpContext.User = principal;
+                                var user = httpContext.RequestServices.GetRequiredService<IUser>();
+                                user.UscId = dictionaryClaims.First(x => x.Key == JwtRegisteredClaimNames.Sub).Value.ToString();
 
-                        }
+                            }
+                        }                        
                     }
                 };
             }

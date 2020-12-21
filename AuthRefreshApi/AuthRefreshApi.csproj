@@ -4,9 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
-    <PackageReference Include="JWT" Version="6.1.4" />
+    <ProjectReference Include="..\AuthRefresh.Middleware\AuthRefresh.Middleware.csproj" />
+    <ProjectReference Include="..\AuthRefresh.Services\AuthRefresh.Services.csproj" />
+    <ProjectReference Include="..\AuthRefresh.Data\AuthRefresh.Data.csproj" />
   </ItemGroup>
 </Project>

@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using AuthRefresh.Services.Constants;
+using AuthRefresh.Services.Interfaces;
 using AuthRefreshApi.Attributes;
-using AuthRefreshApi.Constants;
-using AuthRefreshApi.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Primitives;
 
 namespace AuthRefreshApi.Controllers
 {

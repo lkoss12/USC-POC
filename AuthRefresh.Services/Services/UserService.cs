@@ -1,7 +1,7 @@
-using AuthRefreshApi.Interfaces;
-using AuthRefreshApi.TransferObjects;
+using AuthRefresh.Services.Interfaces;
 
-namespace AuthRefreshApi.Services
+
+namespace AuthRefresh.Services.Services
 {
     public class UserService : IUserService
     {

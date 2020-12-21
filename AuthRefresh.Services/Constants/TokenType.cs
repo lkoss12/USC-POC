@@ -1,4 +1,4 @@
-namespace AuthRefreshApi.Constants
+namespace AuthRefresh.Services.Constants
 {
     public struct TokenType
     {
