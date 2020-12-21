@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Logging;
+using AuthRefresh.Data.Configuration;
 
 namespace AuthRefreshApi
 {
@@ -33,6 +34,7 @@ namespace AuthRefreshApi
             services.AddControllers();
             services.AddSingleton<IConfiguration>((x) => Configuration);
             services.AddAuthRefreshServices();
+            services.AddAuthRefreshData(Configuration);
             
             IdentityModelEventSource.ShowPII = true;
 

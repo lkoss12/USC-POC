@@ -6,6 +6,10 @@
 
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <ProjectReference Include="..\AuthRefresh.Middleware\AuthRefresh.Middleware.csproj" />
     <ProjectReference Include="..\AuthRefresh.Services\AuthRefresh.Services.csproj" />
     <ProjectReference Include="..\AuthRefresh.Data\AuthRefresh.Data.csproj" />
