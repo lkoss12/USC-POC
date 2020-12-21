@@ -1,0 +1,29 @@
+<div fcLayout="row" fxLayoutAlign="space-between center" style="margin-left:10px; margin-right:10px">
+  <div>USC</div>
+  <div>
+    <div>
+      Logged in as: {{ AppService.User?.UscId }} Expires: {{ AuthService.ExpirationDate }}
+    </div>
+    <div>
+      Impersonating: {{ AppService.User?.ImpersonatedUser?.UscId }}
+    </div>
+  </div>
+</div>
+<div style="margin: 5px">
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>USC ID</mat-label>
+      <input matInput placeholder="1234567890" [(ngModel)]="uscId">
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="login()">Log in</button>
+  </div>
+  <div *ngIf="isAuthorized">
+    <mat-form-field class="example-full-width">
+      <mat-label>Impersonation ID</mat-label>
+      <input matInput placeholder="0987654321" [(ngModel)]="impersonationId">
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="impersonate()">Impersonate</button>
+  </div>
+  
+</div>
+<router-outlet></router-outlet>
