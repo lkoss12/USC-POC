@@ -10,6 +10,7 @@ using AuthRefresh.Services.Constants;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 using AuthRefresh.Services.Interfaces;
+using System.Linq;
 
 namespace AuthRefresh.Services.Services
 {
@@ -73,7 +74,7 @@ namespace AuthRefresh.Services.Services
         {
             return true;
         }
-        public string CreateToken(string id, DateTime expires, IEnumerable<Claim> claims)
+        public string CreateToken(string id, DateTime expires, IEnumerable<string> claims)
         {
             var tokenClaims = new List<Claim>() {
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
@@ -81,19 +82,23 @@ namespace AuthRefresh.Services.Services
                 new Claim(JwtRegisteredClaimNames.Sub, id)
             };
             if (claims != null) {
-                tokenClaims.AddRange(claims);
+                tokenClaims.Add(new Claim("claims", "[" + string.Join(",", claims.Select(x=> "\"" + x + "\"")) +"]"));
             }
             return CreateToken(tokenClaims, expires);
         }
 
-        public string CreateImpersonationToken(string id, string impersonationId, DateTime expires)
+        public string CreateImpersonationToken(string id, string impersonationId, DateTime expires, IEnumerable<string> claims)
         {
-            return CreateToken(new List<Claim>() {
+            var tokenClaims = new List<Claim>() {
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Typ, TokenType.Impersonation),
                 new Claim(JwtRegisteredClaimNames.Sub, id),
                 new Claim(JwtRegisteredClaimNames.NameId, impersonationId)
-            }, expires);
+            };
+            if (claims != null) {
+                tokenClaims.Add(new Claim("claims", "[" + string.Join(",", claims.Select(x=> "\"" + x + "\"")) +"]"));
+            }
+            return CreateToken(tokenClaims, expires);
         }
 
         public void AddRefreshCookie(IResponseCookies cookies, string token, DateTime expiration)

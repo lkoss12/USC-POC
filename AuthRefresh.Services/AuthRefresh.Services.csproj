@@ -12,4 +12,8 @@
     <PackageReference Include="JWT" Version="6.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AuthRefresh.Data\AuthRefresh.Data.csproj" />
+  </ItemGroup>
+
 </Project>

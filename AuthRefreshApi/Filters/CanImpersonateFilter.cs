@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Security.Claims;
+using AuthRefresh.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -15,7 +16,11 @@ namespace AuthRefreshApi.Filters
         }
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var hasClaim = context.HttpContext.User.Claims.Any(c => c.Type == _claim.Type && c.Value == _claim.Value);
+            var currentUser = context.HttpContext.RequestServices.GetService(typeof(IUser)) as IUser;
+            if (currentUser == null) {
+                context.Result = new UnauthorizedResult();
+            }
+            var hasClaim = currentUser.Claims.Any(x => x.Equals(_claim.Type, System.StringComparison.CurrentCultureIgnoreCase));
             if (!hasClaim)
             {
                 context.Result = new UnauthorizedResult();

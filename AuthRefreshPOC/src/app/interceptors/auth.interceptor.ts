@@ -22,7 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
         } else if (this.appService.User.ImpersonatedUser != null) {
             request = request.clone({
                 setHeaders: {
-                    'X-IMPERSONATIONTOKEN': this.appService.User.ImpersonatedUser.Token
+                    'X-USC-IMPERSONATION': this.appService.User.ImpersonatedUser.Token
                 }
             });    
         }

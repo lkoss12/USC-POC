@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using AuthRefresh.Data.Contexts.AuthRefresh.Models;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 
 namespace AuthRefresh.Data
 {

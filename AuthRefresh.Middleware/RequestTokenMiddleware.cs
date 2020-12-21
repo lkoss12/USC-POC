@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -7,6 +8,7 @@ using AuthRefresh.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
 
 namespace AuthRefresh.Middleware
 {
@@ -43,7 +45,10 @@ namespace AuthRefresh.Middleware
                                 httpContext.User = principal;
                                 var user = httpContext.RequestServices.GetRequiredService<IUser>();
                                 user.UscId = dictionaryClaims.First(x => x.Key == JwtRegisteredClaimNames.Sub).Value.ToString();
-
+                                var customClaims = dictionaryClaims.FirstOrDefault(x => x.Key == "claims");
+                                if (customClaims.Value != null) {
+                                    user.Claims = JsonConvert.DeserializeObject<List<string>>(customClaims.Value.ToString());
+                                }
                             }
                         }                        
                     }
