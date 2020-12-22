@@ -11,10 +11,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { DataComponent } from './views/data/data.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DataComponent
   ],
   imports: [
     FormsModule,

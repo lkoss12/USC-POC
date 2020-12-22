@@ -1,20 +1,28 @@
+using System.Threading.Tasks;
 using AuthRefresh.Services.Interfaces;
+using AuthRefreshApi.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthRefreshApi.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class DataController : ControllerBase
     {
         private readonly IUserService _userService;
-        public DataController(IUserService userService)
+        private readonly IDataService _dataService;
+        public DataController(IUserService userService,
+                              IDataService dataService)
         {
             _userService = userService;
+            _dataService = dataService;
         }
-        public IActionResult GetRecords()
+
+        [ClaimRequirement("CanGetRecords")]
+        public async Task<IActionResult> GetRecords()
         {
-            return Ok();
+            var uscId = _userService.ImpersonatedUscId;
+            return Ok(await _dataService.GetData(uscId));
         }
     }
 }

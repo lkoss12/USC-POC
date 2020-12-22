@@ -13,5 +13,18 @@ namespace AuthRefresh.Services.Services
             _user = user;
             _impersonatedUser = impersonatedUser;
         }
+
+        public string UserUscId => this._user.UscId;
+
+        public string ImpersonatedUscId 
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this._impersonatedUser.UscId)) {
+                    return UserUscId;
+                }
+                return this._impersonatedUser.UscId;
+            }
+        }
     }
 }

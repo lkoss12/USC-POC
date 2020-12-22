@@ -16,6 +16,7 @@ namespace AuthRefresh.Services.Configuration
             services.AddScoped<IImpersonatedUser, ImpersonatedUser>();
 
             services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IDataService, DataService>();
             return services;
         }
     }

@@ -7,9 +7,9 @@ namespace AuthRefreshApi.Attributes
 {
     public class ClaimRequirementAttribute : TypeFilterAttribute
     {
-        public ClaimRequirementAttribute(string claimType, string claimValue) : base(typeof(ClaimRequirementFilter))
+        public ClaimRequirementAttribute(string claimType) : base(typeof(ClaimRequirementFilter))
         {
-            Arguments = new object[] { new Claim(claimType, claimValue) };
+            Arguments = new string[] { claimType };
         }
     }
 }

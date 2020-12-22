@@ -6,4 +6,5 @@ export interface User {
     Token: string
     UscId?: string,
     Fullname?: string,
+    Claims?: string[]
 }

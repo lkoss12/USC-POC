@@ -12,6 +12,8 @@ namespace AuthRefresh.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<RoleClaim> RoleClaims { get; set; }
+        public DbSet<ProtectedData> ProtectedDatas {get; set;}
+        public DbSet<UserProtectedData> UserProtectedDatas {get; set;}
 
         public AuthRefreshContext(DbContextOptions<AuthRefreshContext> options) : base(options)
         {

@@ -8,19 +8,20 @@ namespace AuthRefreshApi.Filters
 {
     public class ClaimRequirementFilter : IAuthorizationFilter
     {
-        readonly Claim _claim;
+        readonly string _claim;
 
-        public ClaimRequirementFilter(Claim claim)
+        public ClaimRequirementFilter(string claim)
         {
             _claim = claim;
         }
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             var currentUser = context.HttpContext.RequestServices.GetService(typeof(IUser)) as IUser;
-            if (currentUser == null) {
+            if (string.IsNullOrEmpty(currentUser.UscId)) {
                 context.Result = new UnauthorizedResult();
+                return;
             }
-            var hasClaim = currentUser.Claims.Any(x => x.Equals(_claim.Type, System.StringComparison.CurrentCultureIgnoreCase));
+            var hasClaim = currentUser.Claims.Any(x => x.Equals(_claim, System.StringComparison.CurrentCultureIgnoreCase));
             if (!hasClaim)
             {
                 context.Result = new UnauthorizedResult();

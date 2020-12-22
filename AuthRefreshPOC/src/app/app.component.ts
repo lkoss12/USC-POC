@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   uscId: string;
   impersonationId: string;
 
-  isAuthorized: boolean;
+  canImpersonate: boolean;
   authChangedSubscription: Subscription;
   impersonationChangedSubscription: Subscription;
 
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   constructor(private authService: AuthService,
               private appService: AppService) {
-    this.isAuthorized = false;
+    this.canImpersonate = false;
   }
   ngOnDestroy(): void {
     this.authChangedSubscription.unsubscribe();
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authChangedSubscription = this.appService
       .AuthChanged$
       .subscribe((uscId) => {
-        this.isAuthorized = true;
+        this.canImpersonate = this.appService.Claims.includes("CanImpersonate");
       });
 
       this.impersonationChangedSubscription = this.appService

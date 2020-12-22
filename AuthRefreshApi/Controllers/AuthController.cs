@@ -47,7 +47,7 @@ namespace AuthRefreshApi.Controllers
                 user.Claims));
         }
         [HttpGet("impersonate")]
-        [ClaimRequirement("CanImpersonate", "true")]
+        [ClaimRequirement("CanImpersonate")]
         public async Task<IActionResult> GetImpersonationToken([FromServices] IUser currentUser, string uscId)
         {
             if (HttpContext.User == null) return Unauthorized();

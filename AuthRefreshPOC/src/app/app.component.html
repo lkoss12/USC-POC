@@ -17,7 +17,7 @@
     </mat-form-field>
     <button mat-flat-button color="primary" (click)="login()">Log in</button>
   </div>
-  <div *ngIf="isAuthorized">
+  <div *ngIf="canImpersonate">
     <mat-form-field class="example-full-width">
       <mat-label>Impersonation ID</mat-label>
       <input matInput placeholder="0987654321" [(ngModel)]="impersonationId">
@@ -25,5 +25,9 @@
     <button mat-flat-button color="primary" (click)="impersonate()">Impersonate</button>
   </div>
   
+</div>
+<div>
+  Current Claims:<br>
+  {{ AppService.Claims }}
 </div>
 <router-outlet></router-outlet>

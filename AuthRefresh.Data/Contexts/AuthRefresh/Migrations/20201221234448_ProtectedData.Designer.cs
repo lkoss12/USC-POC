@@ -3,14 +3,16 @@ using AuthRefresh.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuthRefresh.Data.Contexts.AuthRefresh.Migrations
 {
     [DbContext(typeof(AuthRefreshContext))]
-    partial class AuthRefreshContextModelSnapshot : ModelSnapshot
+    [Migration("20201221234448_ProtectedData")]
+    partial class ProtectedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
