@@ -44,6 +44,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
       });
   }
+  stopImpersonation() {
+    this.appService.StopImpersonation();
+  }
   impersonate() {
     this.authService.ImpersonateUser(this.impersonationId);
   }

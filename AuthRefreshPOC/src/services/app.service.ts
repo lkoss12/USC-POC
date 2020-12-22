@@ -41,6 +41,10 @@ export class AppService {
         this._user = null;
         
     }
+    StopImpersonation() {
+        this._user.ImpersonatedUser = null;
+        this.impersonationChanged.next(this._user.ImpersonatedUser);
+    }
     Impersonate(token: string) {
         const decodedToken: Token = this.jwtHelperService.decodeToken(token);
         this._user.ImpersonatedUser = {
