@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "input-and-button": [
+        "dist/input-and-button/input-and-button",
+        "dist/input-and-button"
+      ],
+      "poclibrary": [
+        "dist/poclibrary/poclibrary",
+        "dist/poclibrary"
+      ]
+    }
+  }
+}

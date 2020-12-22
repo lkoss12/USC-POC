@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DataComponent } from './views/data/data.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +26,7 @@ import { DataComponent } from './views/data/data.component';
     FlexLayoutModule,
     MatButtonModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {
