@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DataComponent } from './views/data/data.component';
 import { POCLibraryModule } from '@lkoss12/usc-poc';
-import { PoclibraryDebuggableModule } from '@lkoss12/usc-poc-debuggable';
+import { PoclibraryDebuggableModule } from '../../../UITestLibrary/projects/poclibrary-debuggable/src/public-api';
 @NgModule({
   declarations: [
     AppComponent,
