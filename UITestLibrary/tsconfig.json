@@ -23,6 +23,10 @@
       "poclibrary": [
         "dist/poclibrary/poclibrary",
         "dist/poclibrary"
+      ],
+      "poclibrary-debuggable": [
+        "dist/poclibrary-debuggable/poclibrary-debuggable",
+        "dist/poclibrary-debuggable"
       ]
     }
   }

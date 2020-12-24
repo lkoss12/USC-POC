@@ -158,6 +158,46 @@
           }
         }
       }
+    },
+    "poclibrary-debuggable": {
+      "projectType": "library",
+      "root": "projects/poclibrary-debuggable",
+      "sourceRoot": "projects/poclibrary-debuggable/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/poclibrary-debuggable/tsconfig.lib.json",
+            "project": "projects/poclibrary-debuggable/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/poclibrary-debuggable/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/poclibrary-debuggable/src/test.ts",
+            "tsConfig": "projects/poclibrary-debuggable/tsconfig.spec.json",
+            "karmaConfig": "projects/poclibrary-debuggable/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/poclibrary-debuggable/tsconfig.lib.json",
+              "projects/poclibrary-debuggable/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "UITestLibrary"

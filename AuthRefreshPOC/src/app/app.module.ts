@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DataComponent } from './views/data/data.component';
+import { POCLibraryModule } from '@lkoss12/usc-poc';
+import { PoclibraryDebuggableModule } from '@lkoss12/usc-poc-debuggable';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,8 @@ import { DataComponent } from './views/data/data.component';
     MatButtonModule,
     MatInputModule,
     HttpClientModule,
+    POCLibraryModule,
+    PoclibraryDebuggableModule
   ],
   providers: [
     {
